@@ -1,4 +1,7 @@
 #include<vector>
+#include <iostream>
+using namespace std;
+
 template <typename myTip>
 class Derevo
 {
@@ -7,44 +10,114 @@ class Derevo
 		myTip data; //тип элементов дерева
 		int id; //идентификатор
 		MultiNode * parent; //указатель на родительскую структуру
-		vector <MultiNode *> children; //контейнер ссылок на потомков
+		vector <MultiNode *> *children; //контейнер ссылок на потомков
 	};
-	MultiNode * koren;
 	int curr;
-	myTip * find(int id)
+	MultiNode * find(int id1, MultiNode * ukaz)
 	{
-		return p;
+		MultiNode * temp = NULL;
+			if ((ukaz->id) == id1)
+				return ukaz;
+			else
+			{
+				if ((ukaz->children) == NULL)
+					return NULL;
+				for (int i = 0; i <= (ukaz->children)->size() - 1; i++)
+				{
+					temp = find(id1, (*(ukaz->children))[i]);
+					if (temp != NULL)
+						return temp;
+				}
+			}
 	}
 public:
+	MultiNode * koren;
 	int addNode(myTip x, int id)
 	{ 
-		Node * newNode = new Node;
-		Node * p = find(id);
-		(p->children).assign(newNode);
+		MultiNode * newNode = new MultiNode;
+		MultiNode * p = find(id, koren);
+		if (p->children == NULL)
+			p->children = new vector<MultiNode*>;
+		(p->children)->push_back(newNode);
+		newNode->parent = p;
 		newNode->id = ++curr;
-		newNode->x = x;
+		newNode->data = x;
+		newNode->children = NULL;
+		cout << "»дентификатор этого элемента = " << curr << endl;
 		return curr;
 	}
 	void del()
 	{
 		for (int i = curr; i >= 0; i--)
 		{
-			MultiNode * p = find(i);
-			(p->children).~vector;
+			MultiNode * p = find(i, koren);
+			if(p->children != NULL)
+				(p->children)->~vector();
+			((p->parent)->children)->resize(((p->parent)->children)->size() - 1);
+			if(((p->parent)->children)->empty())
+				((p->parent)->children)->pop_back();
 			delete p;
+		}
+		curr = -1;
+	}
+	void list(MultiNode * ukaz)
+	{
+		if (ukaz == NULL)
+		{
+			cout << "ƒерево пусто =(" << endl;
+			return;
+		}
+		if ((ukaz->children) == NULL)
+		{
+			cout << ukaz->data << ' ' << endl;
+		}
+		else
+		{
+			for (int i = 0; i <= (ukaz->children)->size() - 1; i++)
+				list((*(ukaz->children))[i]);
 		}
 	}
 	Derevo(myTip x)
 	{
-		koren = new Node;
-		koren.data = x;
+		koren = new MultiNode;
+		koren->data = x;
 		curr = 0;
 		koren->id = 0;
 		koren->parent = NULL;
 		koren->children = NULL;
+		cout << "»дентификатор корн€ = 0" << endl;
 	}
 	~Derevo()
 	{
 		del();
 	}
 };
+
+int main()
+{
+	setlocale(0, "");
+	int x;
+	cout << "¬ведите корень дерева" << endl;
+	cin >> x;
+	Derevo<int> tree(x);
+	cout << "¬ведите наследника дерева" << endl;
+	cin >> x;
+	tree.addNode(x, 0);
+	cout << "¬ведите наследника дерева" << endl;
+	cin >> x;
+	tree.addNode(x, 0);
+	cout << "¬ведите наследника дерева" << endl;
+	cin >> x;
+	tree.addNode(x, 0);
+	cout << "¬ведите наследника дл€ элемента 1" << endl;
+	cin >> x;
+	tree.addNode(x, 1);
+	cout << "¬ведите наследника дл€ элемента 2" << endl;
+	cin >> x;
+	tree.addNode(x, 2);
+	cout << "¬ведите наследника дл€ элемента 3" << endl;
+	cin >> x;
+	tree.addNode(x, 3);
+	tree.list(tree.koren);
+	return 0;
+}

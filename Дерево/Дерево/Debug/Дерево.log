@@ -1,0 +1,11 @@
+﻿  Source.cpp
+c:\users\днс\desktop\derevo\дерево\дерево\source.cpp(76): warning C4018: <=: несоответствие типов со знаком и без знака
+  c:\users\днс\desktop\derevo\дерево\дерево\source.cpp(64): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\днс\desktop\derevo\дерево\дерево\source.cpp(121): note: см. ссылку на создание экземпляров функции шаблон при компиляции "void Derevo<int>::list(Derevo<int>::MultiNode *)"
+  c:\users\днс\desktop\derevo\дерево\дерево\source.cpp(102): note: см. ссылку на создание экземпляров класса шаблон при компиляции "Derevo<int>"
+c:\users\днс\desktop\derevo\дерево\дерево\source.cpp(25): warning C4018: <=: несоответствие типов со знаком и без знака
+  c:\users\днс\desktop\derevo\дерево\дерево\source.cpp(17): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\днс\desktop\derevo\дерево\дерево\source.cpp(38): note: см. ссылку на создание экземпляров функции шаблон при компиляции "Derevo<int>::MultiNode *Derevo<int>::find(int,Derevo<int>::MultiNode *)"
+c:\users\днс\desktop\derevo\дерево\дерево\source.cpp(32): warning C4715: Derevo<int>::find: значение возвращается не при всех путях выполнения
+  Дерево.vcxproj -> C:\Users\ДНС\Desktop\Derevo\Дерево\Debug\Дерево.exe
+  Дерево.vcxproj -> C:\Users\ДНС\Desktop\Derevo\Дерево\Debug\Дерево.pdb (Full PDB)
