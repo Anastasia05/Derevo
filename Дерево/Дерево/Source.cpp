@@ -51,11 +51,12 @@ public:
 		for (int i = curr; i >= 0; i--)
 		{
 			MultiNode * p = find(i, koren);
-			if(p->children != NULL)
-				(p->children)->~vector();
-			((p->parent)->children)->resize(((p->parent)->children)->size() - 1);
-			if(((p->parent)->children)->empty())
+			if (p->parent != NULL)
+			{
 				((p->parent)->children)->pop_back();
+				if (((p->parent)->children)->size() == 0)
+					(p->parent)->children = NULL;
+			}
 			delete p;
 		}
 		curr = -1;
