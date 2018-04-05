@@ -28,6 +28,7 @@ class Derevo
 					if (temp != NULL)
 						return temp;
 				}
+				return NULL;
 			}
 	}
 public:
@@ -70,13 +71,13 @@ public:
 		}
 		if ((ukaz->children) == NULL)
 		{
-			cout << ukaz->data << ' ' << endl;
+			cout << ukaz->data << ' ';
 		}
 		else
 		{
 			for (int i = 0; i <= (ukaz->children)->size() - 1; i++)
 				list((*(ukaz->children))[i]);
-		}
+		};
 	}
 	Derevo(myTip x)
 	{
@@ -113,6 +114,18 @@ int main()
 	cout << "Введите наследника для элемента 1" << endl;
 	cin >> x;
 	tree.addNode(x, 1);
+	cout << "Введите наследника для элемента 1" << endl;
+	cin >> x;
+	tree.addNode(x, 1);
+	cout << "Введите наследника для элемента 1" << endl;
+	cin >> x;
+	tree.addNode(x, 1);
+	cout << "Введите наследника для элемента 1" << endl;
+	cin >> x;
+	tree.addNode(x, 1);
+	cout << "Введите наследника для элемента 2" << endl;
+	cin >> x;
+	tree.addNode(x, 2);
 	cout << "Введите наследника для элемента 2" << endl;
 	cin >> x;
 	tree.addNode(x, 2);
@@ -120,5 +133,6 @@ int main()
 	cin >> x;
 	tree.addNode(x, 3);
 	tree.list(tree.koren);
+	cout << endl;
 	return 0;
 }
